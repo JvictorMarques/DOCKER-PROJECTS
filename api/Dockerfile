@@ -3,8 +3,10 @@ FROM node:18-slim
 WORKDIR /usr/src/app
 # WORKDIR seta um lugar de trabalho, caso não exista ela cria
 COPY package.json yarn.lock .yarnrc.yml /usr/src/app/
+# Copia o arquivo package.json yarn.lock .yarnrc.yml para o diretório de trabalho
 COPY .yarn ./.yarn
-# Copia o arquivo package.json para o diretório de trabalho
+# Copia a pasta .yarn para um novo diretorio chamado .yarn dentro da pasta /usr/src/app
+# Boa prática quando for copiar pastas use outra linha com copy
 RUN yarn
 # Executa o comando yarn
 COPY . /usr/src/app/
