@@ -2,7 +2,8 @@ FROM node:18-slim
 # FROM pega a imagem: e a versão dela
 WORKDIR /usr/src/app
 # WORKDIR seta um lugar de trabalho, caso não exista ela cria
-COPY package.json yarn.lock /usr/src/app/
+COPY package.json yarn.lock .yarnrc.yml /usr/src/app/
+COPY .yarn ./.yarn
 # Copia o arquivo package.json para o diretório de trabalho
 RUN yarn
 # Executa o comando yarn
