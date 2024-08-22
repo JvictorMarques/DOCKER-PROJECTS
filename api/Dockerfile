@@ -13,10 +13,7 @@ RUN yarn
 # Copiar o restante do código para o diretório de trabalho
 COPY . .
 # Construir a aplicação
-RUN yarn run build
-
-# Reduzir o tamanho da imagem removendo devDependencies
-RUN yarn workspaces focus --production && yarn cache clean
+RUN yarn run build && yarn cache clean
 
 # Production stage
 FROM node:18-alpine3.19
