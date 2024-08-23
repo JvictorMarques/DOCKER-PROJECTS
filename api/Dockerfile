@@ -15,17 +15,6 @@ COPY . .
 RUN yarn run build && yarn cache clean
 
 # Production stage
-FROM node:18-alpine3.19 AS production-deps
-
-WORKDIR /usr/src/app
-
-COPY package.json yarn.lock .yarnrc.yml ./
-COPY .yarn ./.yarn
-
-RUN yarn set version berry
-
-RUN yarn workspaces focus --production && yarn cache clean
-
 FROM node:18-alpine3.19
 
 WORKDIR /usr/src/app
