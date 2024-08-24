@@ -11,6 +11,8 @@ services:
       - MYSQL_DATABASE=my-db
       - MYSQL_USER=admin
       - MYSQL_PASSWORD=root
+    networks:
+      - api-network
 
   api:
     container_name: "api"
@@ -18,3 +20,11 @@ services:
       context: .
     ports:
       - 3001:3000
+    depends_on:
+      - mysql
+    networks:
+      - api-network
+
+networks:
+  api-network:
+    driver: bridge
