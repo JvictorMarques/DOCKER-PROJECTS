@@ -6,6 +6,8 @@ services:
     image: mysql:8
     ports:
       - 3306:3306
+    volumes:
+      - db:var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=my-db
@@ -30,3 +32,6 @@ networks:
     name: api-network
     external: true
     driver: bridge
+
+volumes:
+  db:
